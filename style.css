@@ -13,6 +13,9 @@ body {
     width: 400px;
     margin: 0 auto;
     background-color: #FBAB18;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px black;
 }
 
 .display {
