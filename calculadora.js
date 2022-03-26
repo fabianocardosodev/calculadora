@@ -14,16 +14,18 @@ const calcular = () => {
     if (operacaoPendente()) {
         const numeroAtual = parseFloat(display.textContent);
         novoNumero = true;
-        const resultado = eval(numeroAnterior + )
-        if (operador == '+') {
-            atualizarDisplay(numeroAnterior + numeroAtual);
-        } else if (operador == '-') {
-            atualizarDisplay(numeroAnterior + numeroAtual);
-        } else if (operador == '*') {
-            atualizarDisplay(numeroAnterior + numeroAtual);
-        } else if (operador == '/') {
-            atualizarDisplay(numeroAnterior + numeroAtual);
-        }
+        const resultado = eval(`${ numeroAnterior }${ operador }${ numeroAtual }`);
+        atualizarDisplay(resultado);
+
+        //  if (operador == '+') {
+        //  atualizarDisplay(numeroAnterior + numeroAtual);
+        //} else if (operador == '-') {
+        //  atualizarDisplay(numeroAnterior + numeroAtual);
+        //} else if (operador == '*') {
+        //  atualizarDisplay(numeroAnterior + numeroAtual);
+        //} else if (operador == '/') {
+        //  atualizarDisplay(numeroAnterior + numeroAtual);
+        //  }
     }
 }
 
@@ -51,3 +53,50 @@ const selecionarOperador = (evento) => {
 }
 
 operadores.forEach(operador => operador.addEventListener('click', selecionarOperador));
+
+// botao igual
+const ativarIgual = () => {
+    calcular();
+    operador = undefined;
+}
+document.getElementById('igual').addEventListener('click', ativarIgual);
+
+
+// botao limpar CE
+const limparDisplay = () => display.textContent = '';
+document.getElementById('limparDisplay').addEventListener('click', limparDisplay);
+
+//botao limpar C
+const limparCalculo = () => {
+    limparDisplay();
+    operador = undefined;
+    novoNumero = true;
+    numeroAnterior = undefined;
+}
+document.getElementById('limparCalculo').addEventListener('click', limparCalculo);
+
+
+
+const removerUltimoNumero = () => display.textContent = display.textContent.slice(0, -1);
+document.getElementById('backspace').addEventListener('click', removerUltimoNumero);
+
+const inverterSinal = () => {
+    novoNumero = true;
+    atualizarDisplay(display.textContent * -1);
+}
+document.getElementById('inverter').addEventListener('click', inverterSinal);
+
+
+
+const inserirDecimal = () => {
+    if (!existeDecimal()) {
+        if (existeValor()) {
+            atualizarDisplay(',');
+        } else {
+            atualizarDisplay('0,');
+
+        }
+    }
+}
+
+document.getElementById('decimal').addEventListener('click', inserirDecimal);
