@@ -102,29 +102,32 @@ const inserirDecimal = () => {
 document.getElementById('decimal').addEventListener('click', inserirDecimal);
 
 const mapaTeclado = {
-    '0': '#tecla0',
-    '1': '#tecla1',
-    '2': '#tecla2',
-    '3': '#tecla3',
-    '4': '#tecla4',
-    '5': '#tecla5',
-    '6': '#tecla6',
-    '7': '#tecla7',
-    '8': '#tecla8',
-    '9': '#tecla9',
-    '/': '#operadorDividir',
-    '*': '#operadorMultiplicar',
-    '+': '#operadorAdicionar',
-    '-': '#operadorSubtrair',
-    '=': '#Igual',
-    'enter': '#Igual'
+    '0': 'tecla0',
+    '1': 'tecla1',
+    '2': 'tecla2',
+    '3': 'tecla3',
+    '4': 'tecla4',
+    '5': 'tecla5',
+    '6': 'tecla6',
+    '7': 'tecla7',
+    '8': 'tecla8',
+    '9': 'tecla9',
+    '/': 'operadorDividir',
+    '*': 'operadorMultiplicar',
+    '+': 'operadorAdicionar',
+    '-': 'operadorSubtrair',
+    'Enter': 'igual',
+    '=': 'igual',
+    'Backspace': 'backspace',
+    'c': 'limparDisplay',
+    'Escape': 'limparCalculo',
+    ',': 'decimal'
 
 }
 
 const mapearTeclado = (evento) => {
     const tecla = evento.key;
-
-    const teclaPermitida = () => Object.keys(mapateclado).indexOf(tecla) != -1;
+    const teclaPermitida = () => Object.keys(mapaTeclado).indexOf(tecla) != -1;
     if (teclaPermitida()) document.getElementById(mapaTeclado[tecla]).click();
 
 }
